@@ -41,7 +41,7 @@ const float frameTime_ = float(0.016);
 KOT_Scene* scene_ = nullptr;
 bool warpPointerEvent_ = false;
 
-void main(int argc, char** argv)
+int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
@@ -72,6 +72,7 @@ void main(int argc, char** argv)
 	glutMouseWheelFunc(mouseWheel);
 	glutSpecialFunc(specialKeyInput);
 	glutMainLoop();
+	return 0;
 }
 
 void initProgram()

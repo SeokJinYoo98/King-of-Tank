@@ -49,7 +49,7 @@ Enemy::Enemy()
 	tag_ = 'E';
 	behavior_ = 'N';
 
-	meshes_ = ObjectLoader::M_loadMesh("objs/tank.obj", "Texture");
+	meshes_ = ObjectLoader::M_loadMesh("assets/models/tank.obj", "Texture");
 	for (auto& mesh : meshes_) {
 		mesh->applyMovement();
 		mesh->addCollision();
@@ -83,7 +83,7 @@ Enemy::Enemy()
 	angle_ = 0.f;
 	dist_ = 0.f;
 
-	for (auto& mesh : ObjectLoader::M_loadMesh("objs/EFlag.obj", "Model")) {
+	for (auto& mesh : ObjectLoader::M_loadMesh("assets/models/EFlag.obj", "Model")) {
 		mesh->applyMovement();
 		mesh->addCollision();
 		mesh->addMovement();

@@ -10,7 +10,7 @@ Bullet::Bullet(const glm::vec3& startPos, const glm::vec3& forwardVector, float 
 	movement_.setDirection(forwardVector);
 	movement_.setVelocity(30.f, 30.f, 30.f);
 	// MeshInfo
-	meshes_ = ObjectLoader::M_loadMesh("./objs/rocket.obj", "Model");
+	meshes_ = ObjectLoader::M_loadMesh("assets/models/rocket.obj", "Model");
 
 	meshes_[0]->localTransform_.setScale(glm::vec3(0.25f, 0.25f, 0.25f));
 	meshes_[0]->applyMovement();

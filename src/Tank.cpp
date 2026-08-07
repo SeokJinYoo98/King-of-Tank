@@ -8,7 +8,7 @@ import ObjectLoader;
 Tank::Tank()
 {
 	tag_ = 'P';
-	meshes_ = ObjectLoader::M_loadMesh("objs/tank.obj", "Texture");
+	meshes_ = ObjectLoader::M_loadMesh("assets/models/tank.obj", "Texture");
 	for (auto& mesh : meshes_) {
 		mesh->localTransform_.rotateY(180.f);
 	}

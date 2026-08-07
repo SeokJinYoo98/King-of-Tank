@@ -5,7 +5,7 @@ Grid::Grid()
 	: gridVAO_(0), gridVBO_(0)
 {
 	float gsize = 2.5f;
-	gridShader_ = new Shader("./shaders/grid.VS", "./shaders/grid.FS");
+	gridShader_ = new Shader("assets/shaders/grid.VS", "assets/shaders/grid.FS");
 
 	gridVertices_ = {
 		// xyz rgba

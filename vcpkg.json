@@ -1,0 +1,9 @@
+{
+  "name": "king-of-tank",
+  "version-string": "1.0.0",
+  "dependencies": [
+    "freeglut",
+    "glew",
+    "glm"
+  ]
+}

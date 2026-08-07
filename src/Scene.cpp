@@ -162,76 +162,76 @@ void Scene::addStaticObject(const std::string& fileName, const std::string& shad
 void Scene::addLightCube(bool Static)
 {
 	if (Static) {
-		addStaticObject("./objs/cube.obj", "LightSource");
+		addStaticObject("assets/models/cube.obj", "LightSource");
 	}
 	else {
-		addObject("./objs/cube.obj", "LightSource");
+		addObject("assets/models/cube.obj", "LightSource");
 	}
 }
 
 void Scene::addCube(bool Static)
 {
 	if (Static) {
-		addStaticObject("./objs/cube.obj", "Texture");
+		addStaticObject("assets/models/cube.obj", "Texture");
 	}
 	else {
-		addObject("./objs/cube.obj", "Texture");
+		addObject("assets/models/cube.obj", "Texture");
 	}
 }
 
 void Scene::addSphere(bool Static)
 {
 	if (Static) {
-		addStaticObject("./objs/sphere.obj", "Model");
+		addStaticObject("assets/models/sphere.obj", "Model");
 	}
 	else {
-		addObject("./objs/sphere.obj", "Model");
+		addObject("assets/models/sphere.obj", "Model");
 	}
 }
 
 void Scene::addCylinder(bool Static)
 {
 	if (Static) {
-		addStaticObject("./objs/cylinder.obj", "Model");
+		addStaticObject("assets/models/cylinder.obj", "Model");
 	}
 	else {
-		addObject("./objs/cylinder.obj", "Model");
+		addObject("assets/models/cylinder.obj", "Model");
 	}
 }
 
 void Scene::addPyramid(bool Static)
 {
 	if (Static) {
-		addStaticObject("./objs/pyramid.obj", "Model");
+		addStaticObject("assets/models/pyramid.obj", "Model");
 	}
 	else {
-		addObject("./objs/pyramid.obj", "Model");
+		addObject("assets/models/pyramid.obj", "Model");
 	}
 }
 
 void Scene::addRectPyramid(bool Static)
 {
 	if (Static) {
-		addStaticObject("./objs/rpyramid.obj", "Model");
+		addStaticObject("assets/models/rpyramid.obj", "Model");
 	}
 	else {
-		addObject("./objs/rpyramid.obj", "Model");
+		addObject("assets/models/rpyramid.obj", "Model");
 	}
 }
 
 void Scene::addMonkey(bool Static)
 {
 	if (Static) {
-		addStaticObject("./objs/monkey.obj", "Model");
+		addStaticObject("assets/models/monkey.obj", "Model");
 	}
 	else {
-		addObject("./objs/monkey.obj", "Model");
+		addObject("assets/models/monkey.obj", "Model");
 	}
 }
 
 void Scene::addTree()
 {
-	addStaticObject("./objs/Tree.obj", "Model");
+	addStaticObject("assets/models/Tree.obj", "Model");
 }
 
 void Scene::setupObject(std::shared_ptr<Object> obj)
@@ -261,9 +261,9 @@ void Scene::checkGarbage()
 
 	objects_.erase(
 		std::remove_if(objects_.begin(), objects_.end(),
-			[](const std::shared_ptr<Object>& bullet) {
-				if (bullet->isDeleteTarget()) {
-					Renderer::M_deleteObj(bullet);
+			[](const std::shared_ptr<Object>& obj) {
+				if (obj->isDeleteTarget()) {
+					Renderer::M_deleteObj(obj);
 					return true;
 				}
 				return false;

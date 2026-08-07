@@ -4,11 +4,11 @@
 ShaderManager::ShaderManager()
 {
 	// 셰이더 로드
-	loadShader("Model", "./shaders/model.VS", "./shaders/model.FS");
-	loadShader("LightSource", "./shaders/lightSource.VS", "./shaders/lightSource.FS");
-	loadShader("Collision", "./shaders/collision.VS", "./shaders/collision.FS");
-	loadShader("Line", "./shaders/Line.VS", "./shaders/Line.FS");
-	loadShader("Texture", "./shaders/texture.VS", "./shaders/texture.FS");
+	loadShader("Model", "assets/shaders/model.VS", "assets/shaders/model.FS");
+	loadShader("LightSource", "assets/shaders/lightSource.VS", "assets/shaders/lightSource.FS");
+	loadShader("Collision", "assets/shaders/collision.VS", "assets/shaders/collision.FS");
+	loadShader("Line", "assets/shaders/Line.VS", "assets/shaders/Line.FS");
+	loadShader("Texture", "assets/shaders/texture.VS", "assets/shaders/texture.FS");
 }
 ShaderManager::~ShaderManager()
 {

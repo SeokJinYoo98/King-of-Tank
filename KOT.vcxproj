@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -105,12 +105,18 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>glew32.lib freeglut.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalLibraryDirectories>$(ProjectDir)vcpkg_installed\x64-windows\debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32d.lib;freeglutd.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(ProjectDir)vcpkg_installed\x64-windows\debug\bin\glew32d.dll" "$(OutDir)"
+copy /Y "$(ProjectDir)vcpkg_installed\x64-windows\debug\bin\freeglutd.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -121,83 +127,89 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)vcpkg_installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>glew32.lib freeglut.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalLibraryDirectories>$(ProjectDir)vcpkg_installed\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;freeglut.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(ProjectDir)vcpkg_installed\x64-windows\bin\glew32.dll" "$(OutDir)"
+copy /Y "$(ProjectDir)vcpkg_installed\x64-windows\bin\freeglut.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Aim.cpp" />
-    <ClCompile Include="BulletManager.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Collision.cpp" />
-    <ClCompile Include="CollisionChecker.ixx" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="global.cpp" />
-    <ClCompile Include="Grid.cpp" />
-    <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="KOT_PlayerController.cpp" />
-    <ClCompile Include="Line.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="ModelMatrix.cpp" />
-    <ClCompile Include="Movement.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="ObjectLoader.ixx" />
-    <ClCompile Include="PlayerController.cpp" />
-    <ClCompile Include="Projection.cpp" />
-    <ClCompile Include="Renderer.ixx" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="ShaderManager.cpp" />
-    <ClCompile Include="stb_image.cpp" />
-    <ClCompile Include="Tank.cpp" />
-    <ClCompile Include="KOT_Scene.cpp" />
-    <ClCompile Include="Viewing.cpp" />
+    <ClCompile Include="src\Aim.cpp" />
+    <ClCompile Include="src\BulletManager.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\Collision.cpp" />
+    <ClCompile Include="src\CollisionChecker.ixx" />
+    <ClCompile Include="src\Enemy.cpp" />
+    <ClCompile Include="src\global.cpp" />
+    <ClCompile Include="src\Grid.cpp" />
+    <ClCompile Include="src\Bullet.cpp" />
+    <ClCompile Include="src\KOT_PlayerController.cpp" />
+    <ClCompile Include="src\Line.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\ModelMatrix.cpp" />
+    <ClCompile Include="src\Movement.cpp" />
+    <ClCompile Include="src\Object.cpp" />
+    <ClCompile Include="src\ObjectLoader.ixx" />
+    <ClCompile Include="src\PlayerController.cpp" />
+    <ClCompile Include="src\Projection.cpp" />
+    <ClCompile Include="src\Renderer.ixx" />
+    <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\ShaderManager.cpp" />
+    <ClCompile Include="src\stb_image.cpp" />
+    <ClCompile Include="src\Tank.cpp" />
+    <ClCompile Include="src\KOT_Scene.cpp" />
+    <ClCompile Include="src\Viewing.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Aim.h" />
-    <ClInclude Include="BulletManager.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Collision.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="global.h" />
-    <ClInclude Include="Grid.h" />
-    <ClInclude Include="Bullet.h" />
-    <ClInclude Include="KOT_PlayerController.h" />
-    <ClInclude Include="Line.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="ModelMatrix.h" />
-    <ClInclude Include="Movement.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="PlayerController.h" />
-    <ClInclude Include="Projection.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="Shader.h" />
-    <ClInclude Include="ShaderManager.h" />
-    <ClInclude Include="stb_image.h" />
-    <ClInclude Include="Tank.h" />
-    <ClInclude Include="KOT_Scene.h" />
-    <ClInclude Include="Viewing.h" />
+    <ClInclude Include="src\Aim.h" />
+    <ClInclude Include="src\BulletManager.h" />
+    <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\Collision.h" />
+    <ClInclude Include="src\Enemy.h" />
+    <ClInclude Include="src\global.h" />
+    <ClInclude Include="src\Grid.h" />
+    <ClInclude Include="src\Bullet.h" />
+    <ClInclude Include="src\KOT_PlayerController.h" />
+    <ClInclude Include="src\Line.h" />
+    <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\ModelMatrix.h" />
+    <ClInclude Include="src\Movement.h" />
+    <ClInclude Include="src\Object.h" />
+    <ClInclude Include="src\PlayerController.h" />
+    <ClInclude Include="src\Projection.h" />
+    <ClInclude Include="src\Scene.h" />
+    <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\ShaderManager.h" />
+    <ClInclude Include="src\stb_image.h" />
+    <ClInclude Include="src\Tank.h" />
+    <ClInclude Include="src\KOT_Scene.h" />
+    <ClInclude Include="src\Viewing.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
-    <None Include="shaders\collision.FS" />
-    <None Include="shaders\collision.VS" />
-    <None Include="shaders\grid.FS" />
-    <None Include="shaders\grid.VS" />
-    <None Include="shaders\lightSource.FS" />
-    <None Include="shaders\lightSource.VS" />
-    <None Include="shaders\Line.FS" />
-    <None Include="shaders\Line.VS" />
-    <None Include="shaders\model.FS" />
-    <None Include="shaders\model.VS" />
-    <None Include="shaders\texture.FS" />
-    <None Include="shaders\texture.VS" />
+    <None Include="assets\shaders\collision.FS" />
+    <None Include="assets\shaders\collision.VS" />
+    <None Include="assets\shaders\grid.FS" />
+    <None Include="assets\shaders\grid.VS" />
+    <None Include="assets\shaders\lightSource.FS" />
+    <None Include="assets\shaders\lightSource.VS" />
+    <None Include="assets\shaders\Line.FS" />
+    <None Include="assets\shaders\Line.VS" />
+    <None Include="assets\shaders\model.FS" />
+    <None Include="assets\shaders\model.VS" />
+    <None Include="assets\shaders\texture.FS" />
+    <None Include="assets\shaders\texture.VS" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="아쉬운점Or좋았던점Or배운점.txt">
